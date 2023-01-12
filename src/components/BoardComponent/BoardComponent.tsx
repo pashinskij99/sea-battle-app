@@ -7,8 +7,6 @@ import { CellComponent } from '../CellComponent'
 interface BoardComponentProps {
     board: Board
     setBoard: React.Dispatch<React.SetStateAction<Board>>
-    shoot: (x: number, y: number) => void
-    shipsReady: boolean
 }
 
 export const BoardComponent = ({ setBoard, board }: BoardComponentProps) => {

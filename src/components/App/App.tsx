@@ -3,12 +3,8 @@ import {useEffect, useState} from "react";
 import {Board} from "../../models/Board";
 import {BoardComponent} from "../BoardComponent";
 
-interface AppProps {
-}
-
-export const App = ({}: AppProps) => {
+export const App = () => {
   const [myBoard, setMyBoard] = useState<Board>(new Board())
-  const [shipsReady, setShipsReady] = useState<boolean>(false)
 
   const restart = () => {
     const newMyBoard = new Board()
@@ -16,10 +12,6 @@ export const App = ({}: AppProps) => {
     newMyBoard.initCells()
 
     setMyBoard(newMyBoard)
-  }
-
-  const shoot = (x: number, y: number) => {
-
   }
 
   useEffect(() => {
@@ -33,8 +25,6 @@ export const App = ({}: AppProps) => {
         <BoardComponent
           board={myBoard}
           setBoard={setMyBoard}
-          shipsReady={shipsReady}
-          shoot={shoot}
         />
       </div>
 

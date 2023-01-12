@@ -8,7 +8,6 @@ let privateUserLocation: string[] = []
 export class Board {
   cells: Cell[][] = []
   ships: string[] = []
-
   shipCount: number[] = [1, 2, 3, 4] // array of number of ships
   shipSize: number[] = [4, 3, 2, 1] // an array of types of ships 4-deck, 3-deck ...
 
@@ -75,10 +74,8 @@ export class Board {
 
   addPrivateLocation(location: string[], privateLocation: string[]) {
     for(let i = 0; i < location.length; i++) {
-      // @ts-ignore
-      const startCoordinateX = location[i][0] - 1
-      // @ts-ignore
-      const startCoordinateY = location[i][1] - 1
+      const startCoordinateX = +location[i][0] - 1
+      const startCoordinateY = +location[i][1] - 1
       for(let j = startCoordinateX; j < startCoordinateX + 3; j++) {
         for(let r = startCoordinateY; r < startCoordinateY + 3; r++) {
           if( j >= 0 && j < 10 && r >= 0 && r < 10 ) {
@@ -91,8 +88,6 @@ export class Board {
       }
     }
   }
-
-  //
 
   initCells () {
     for (let i = 0; i < 10; i++) {

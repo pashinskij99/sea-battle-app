@@ -1,6 +1,10 @@
 import styles from './CellComponent.module.scss';
 import clsx from "clsx";
 import {Cell} from "../../models/Cell";
+// @ts-ignore
+import damageImage from '../../assets/damage.png'
+// @ts-ignore
+import {ReactComponent as ShipSvg} from '../../assets/ship.svg'
 
 interface CellComponentProps {
   cell: Cell
@@ -8,11 +12,27 @@ interface CellComponentProps {
 }
 
 export const CellComponent = ({cell, addMark}: CellComponentProps) => (
-  <div className={clsx(styles.cell, cell?.mark ? styles.color : '') } onClick={() => addMark(cell.x, cell.y)}>
+  <div
+    className={clsx(
+      styles.cell,
+      {[styles.color]: cell?.mark?.name === 'ship' || cell?.mark?.name === 'damage'}
+    )}
+    onClick={() => addMark(cell.x, cell.y)}
+  >
+    {
+      cell?.mark?.name === 'ship'
+        ? <span className={styles.ship}>
+            <ShipSvg />
+            {/*<img src={ShipSvg} alt="ship"/>*/}
+          </span>
+        : null
+    }
     {
       cell?.mark?.name === 'miss'
-        ? <div>&#183;</div>
-        : <span>{cell?.mark?.logo}</span>
+        ? <div className={styles.miss}>&#183;</div>
+        : <span className={styles.damageWrapper}>
+            {cell?.mark?.logo ? <img src={damageImage} alt="damage"/> : ''}
+          </span>
     }
   </div>
 );

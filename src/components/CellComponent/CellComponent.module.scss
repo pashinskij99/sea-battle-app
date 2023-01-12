@@ -7,6 +7,26 @@
   border: 1px solid blue;
   line-height: 100%;
 }
+.miss {
+  pointer-events: none;
+  font-size: 5rem;
+}
+.ship {
+  pointer-events: none;
+  svg {
+    display: inline-block;
+    width: 40px;
+  }
+}
+.damageWrapper {
+  pointer-events: none;
+  width: 70%;
+  height: 70%;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
 .color {
-    background-color: grey;
+    background-color: rgba(grey, 0.5);
 }
